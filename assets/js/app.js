@@ -12,23 +12,31 @@ function Datos(nombre,apellido,correo,contraseña){
 
 arrDatitos = [];
 
+
   var botoni = document.getElementById('register');
   botoni.addEventListener("click",function () {
     var name = document.getElementById('name').value;
     var lastName = document.getElementById('lastName').value;
     var email = document.getElementById("email").value;
-    var pasaw = document.getElementById("password").value;
-    if(name.length!=0 && lastName.length!=0 && email.length!=0 &&
-      passw.length!=0 ){
-        arrDatitos.push(new Datos(name, lastName, email, passw));
-        creandoDiv(arrDatitos);
-			  document.getElementById("formDos").reset()
-      }else{
-			var incompleto = document.getElementById("incompleto");
-			incompleto.innerText = "Todos los campos son obligatorios"
-		}
+    var passw = document.getElementById("password").value;
+
+    // validando todo el formulario y contraseña
+        if(name.length==0 && lastName.length==0 && email.length==0 &&  passw.length==0) {
+          var incompleto = document.getElementById("incompleto");
+          incompleto.innerText = "Todos los campos son obligatorios"
+        }else if (passw.length<=5 || passw.length>=21) {
+          var aqui = document.getElementById("aqui")
+          aqui.innerText="Contraseña debe tener entre 6 y 21 caracteres"
+        }else{
+          console.log(new Datos(name, lastName, email, passw));
+   			  localStorage.setItem("nuevoDate",JSON.stringify(new Datos(name, lastName, email, passw)));
+   			  document.getElementById("formDos").reset()
+           window.location ="mostrar.html"
+        }
   });
-  function creandoDiv(datito){
+
+
+  function creaDiv(datito){
   var contenedor = document.getElementById("div-contenedor");
   contenedor.innerHTML="";
   for(var i = 0; i < datito.length; i++){
@@ -58,4 +66,5 @@ var letras = function(e){
 }
 names.onkeypress=letras;
 lastNames.onkeypress=letras;
-    }
+
+}
