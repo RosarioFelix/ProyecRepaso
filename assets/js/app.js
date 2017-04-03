@@ -15,6 +15,7 @@ arrDatitos = [];
 
   var botoni = document.getElementById('register');
   botoni.addEventListener("click",function () {
+
     var name = document.getElementById('name').value;
     var lastName = document.getElementById('lastName').value;
     var email = document.getElementById("email").value;
@@ -24,13 +25,16 @@ arrDatitos = [];
         if(name.length==0 && lastName.length==0 && email.length==0 &&  passw.length==0) {
           var incompleto = document.getElementById("incompleto");
           incompleto.innerText = "Todos los campos son obligatorios"
-        }else if (passw.length<=5 || passw.length>=21) {
-          var aqui = document.getElementById("aqui")
-          aqui.innerText="Contraseña debe tener entre 6 y 21 caracteres"
+        }else if(passw.length <=5 || passw.length >=21){
+          var aqui = document.getElementById("aqui");
+          aqui.innerText = "Contraseña debe tener entre 6 y 21 caracteres"
+        }else if(!(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/).test(email)) {
+          var aquiCero = document.getElementById("here")
+          aquiCero.innerText = "Escriba correo : xxxx@xxxx.com"
         }else{
           console.log(new Datos(name, lastName, email, passw));
-   			  localStorage.setItem("nuevoDate",JSON.stringify(new Datos(name, lastName, email, passw)));
-   			  document.getElementById("formDos").reset()
+          localStorage.setItem("nuevoDate",JSON.stringify(new Datos(name, lastName, email, passw)));
+          document.getElementById("formDos").reset()
            window.location ="mostrar.html"
         }
   });
@@ -63,8 +67,8 @@ var letras = function(e){
       this.nextElementSibling.nextElementSibling.innerText = "Este campo permite letras"
     return false;
   }
-}
+};
+
 names.onkeypress=letras;
 lastNames.onkeypress=letras;
-
 }

@@ -1,0 +1,48 @@
+h1{
+	color: #F5A9BC;
+}
+.informacion{
+	border: 2px solid black;
+	display: inline-block;
+	margin: 20px 0 0 20px;
+	padding: 15px;
+}
+.informacion p {
+	margin: 3px 0;
+}
+body{
+	text-align: center;
+	padding-top: 80px;
+}
+form{
+	display: inline-block;
+	text-align: left;
+}
+button{
+	margin: 0 auto;
+	display: block;
+}
+label{
+	display: inline-block;
+	width: 90px;
+}
+
+
+#bienvenida-dato{
+	width: 200px;
+    border: 1px solid black;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+}
+#name1,#lastName1,#email,#passw1{
+	color: black;
+	margin: 0;
+}
+.edit-boton{
+	text-align: right;
+}
+.edit-boton button{
+	display: inline-block;
+	margin-right: 30px;
+}
